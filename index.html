@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Stempel</title>
+    <link rel="stylesheet" type="text/css" href="index.css">
+    <script src="./filter.js"></script>
+  </head>
+  <body id="holder">
+    <h1>Hello World!</h1>
+
+    <script>
+    document.addEventListener('drop', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+    
+        for (const f of e.dataTransfer.files) {
+            console.log('File(s) you dragged here: ', f.path)
+            console.log('File(s) full: ', f)
+            // pass path and filename
+            filter(f.path, f.name)
+        }
+    });
+
+    document.addEventListener('dragover', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+    });
+    </script>
+
+  </body>
+</html>

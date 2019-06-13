@@ -1,6 +1,10 @@
 let fs = require('fs')
 
 async function rename (fullPathname, filename, prefix) {
+    
+    console.log(prefix)
+    console.log(filename)
+    console.log(fullPathname)
 
     try {
         // get path without filename

@@ -1,4 +1,4 @@
-const config = require('./config')
+const config = require('../config')
 const rename = require('./rename')
 
 async function filter (fullpath, uppercaseFilename) {

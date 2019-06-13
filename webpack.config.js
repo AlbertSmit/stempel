@@ -1,4 +1,6 @@
-var path = require('path');
+const path = require('path');
+const HtmlWebPackPlugin = require("html-webpack-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = {
 	// entry file - starting point for the app
@@ -9,29 +11,45 @@ module.exports = {
 		path: path.join(__dirname, 'build'),
 		filename: 'bundle.js'
 	},
-    target: 'node',
+  target: 'node',
 	module: {
 		rules: [
 			{
-				test: /\.jsx?/i,
+				test: /\.js?/i,
 				loader: 'babel-loader',
 				options: {
 					presets: [
-                        ["@babel/preset-env",
-                        {
-                            "targets": {
-                              "node": "10"
-                            }
-                          }
-                        ],
-                    ],
+										["@babel/preset-env",
+										{
+												"targets": {
+													"node": "10"
+												}
+											}
+										],
+									],
 					plugins: [
-                        ["@babel/plugin-transform-react-jsx", { pragma: 'h' }]
+            ["@babel/plugin-transform-react-jsx", { pragma: 'h' }]
 					]
 				}
-			}
+			},{
+        test: /\.css$/,
+        use: [
+          MiniCssExtractPlugin.loader,
+          "css-loader", "postcss-loader",
+          ],
+      },
 		]
 	},
+	plugins: [
+    new MiniCssExtractPlugin({
+      filename: "src/styles.css",
+      chunkFilename: "styles.css"
+		}),
+    new HtmlWebPackPlugin({
+			template: "./src/index.html",
+			filename: "./index.html"
+		}),
+	],
 	
 	// enable Source Maps
 	devtool: 'source-map',

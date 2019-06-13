@@ -12,11 +12,21 @@ Clients send me a ton of stems (the audio files that make up a song), but they a
 Currently a work in progress, but here's what it does now:
 ![Imgur](https://github.com/AlbertSmit/stempel/blob/development/stempel.gif?raw=true)
 
-Instruments are grouped per letter, so for instance:
-- A is Drums
-- B is Bass
-- F is Brass 
-- etc, etc.
+Instruments are grouped per letter (as shown in .gif), so for instance:
+- **A** is Drums
+- **B** is Bass
+- **F** is Brass 
+- _etc, etc._
+
+Dependencies
+---
+Stempel currently mainly uses:
+- Preact
+- Webpack
+- Electron
+- TailwindCSS
+- PostCSS
+
 
 ---
 

@@ -1,0 +1,48 @@
+@tailwind base;
+
+@tailwind components;
+
+@tailwind utilities;
+
+/* Custom css */
+
+#holder {
+    display: flex;
+    width: 95%;
+    height: 95%;
+}
+
+.app {
+    display: flex;
+    flex-direction: column;
+}
+
+.landpad {
+    background-color: white;
+    border-radius: 5px;
+    display: flex;
+    flex: 1;
+}
+
+body {
+    background-color: darkblue;
+    color: aliceblue;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+h1 {
+    font-weight: 400;
+    font-size: 5rem;
+}
+
+.titleBar {
+    width: 100%;
+    height: 20px;
+}
+
+.main-margin {
+    display: flex;
+    flex-direction: column;
+    width: 95%;
+    margin: 1rem;
+}

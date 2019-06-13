@@ -1,7 +1,7 @@
 let fs = require('fs')
 
 async function rename (fullPathname, filename, prefix) {
-
+    
     try {
         // get path without filename
         let pathWithoutFile = fullPathname.replace(filename,'')

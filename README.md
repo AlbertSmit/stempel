@@ -10,7 +10,7 @@ Clients send me a ton of stems (the audio files that make up a song), but they a
 
 
 Currently a work in progress, but here's what it does now:
-[Imgur](https://i.imgur.com/K9g54g0.gifv)
+![Imgur](https://i.imgur.com/K9g54g0.gifv)
 
 Instruments are grouped per letter, so for instance:
 - A is Drums

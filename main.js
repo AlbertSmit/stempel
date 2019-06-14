@@ -8,7 +8,7 @@ function createWindow () {
   // Create the browser window.
   win = new BrowserWindow({
     width: 600,
-    height: 600,
+    height: 450,
     titleBarStyle: 'hidden',
     webPreferences: {
       nodeIntegration: true
@@ -19,7 +19,7 @@ function createWindow () {
   win.loadFile('src/index.html')
 
   // Open the DevTools. (commented out)
-   win.webContents.openDevTools()
+  // win.webContents.openDevTools()
 
   // Emitted when the window is closed.
   win.on('closed', () => {

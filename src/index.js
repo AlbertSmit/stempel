@@ -15,7 +15,6 @@ let fs = require('fs')
 // this holds our rendered root element so we can re-render in response to HMR updates.
 let root;
 
-
 // Making our app's initialization a function means it's repeatable.
 function init() {
 	// HMR requires that this be a require()
@@ -33,12 +32,18 @@ init();
 // If this is webpack-dev-server, set up HMR :)
 if (module.hot) module.hot.accept('./components/app', init);
 
+// A: Array to temporarily store filenames in:
+let fileCollection = []
+
 // A: Load the event listener for drag and drop in electron
 document.addEventListener('drop', (e) => {
     e.preventDefault();
     e.stopPropagation();
     for (const f of e.dataTransfer.files) {
         filter(f.path, f.name)
+        // let newFile = { filename: `"${f.name}"`}
+        // fileCollection.push(newFile)
+        // console.log(fileCollection)
     }
 });
 

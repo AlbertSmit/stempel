@@ -2,9 +2,11 @@ import { h, Component } from 'preact';
 
 import '../styles.css';
 
-import Hello from './hello';
+import Options from './options';
 import Landing from './landing';
 import TitleBar from './titlebar';
+import LandPad from './landpad';
+import Footer from './footer';
 
 //->
 // create notification 
@@ -18,9 +20,11 @@ export default class App extends Component {
         return (
             <div class="app">
                 <TitleBar />
-                <div class="main-margin">
+                <div class="main-margin justify-center">
+                    <Options />
                     <Landing />
-                    <Hello />
+                    <LandPad />
+                    <Footer />
                 </div>
             </div>
         );

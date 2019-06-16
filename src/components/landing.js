@@ -1,7 +1,9 @@
 import { h } from 'preact';
 	
 export default () => (
-    <h1>
-        Drop a file.
-    </h1>
+    <div class='landing'>
+        <h1 class='antialiased text-5xl font-medium'>
+            Drop batch to rename.
+        </h1>
+    </div>
 );

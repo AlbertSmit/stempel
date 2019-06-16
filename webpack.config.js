@@ -42,7 +42,7 @@ module.exports = {
 	},
 	plugins: [
     new MiniCssExtractPlugin({
-      filename: "src/styles.css",
+      filename: "styles.css",
       chunkFilename: "styles.css"
 		}),
     new HtmlWebPackPlugin({

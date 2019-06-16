@@ -6,15 +6,7 @@ import Options from './options';
 import Landing from './landing';
 import TitleBar from './titlebar';
 import LandPad from './landpad';
-import Settings from './settings';
 import Footer from './footer';
-
-//->
-// create notification 
-// myNotification = () => { new Notification('Stempel', {
-//     body: 'Stem marking finished.'
-//     })
-// }
 
 export default class App extends Component {
     render() {
@@ -25,7 +17,6 @@ export default class App extends Component {
                     <Options />
                     <Landing />
                     <LandPad />
-                    <Settings />
                     <Footer />
                 </div>
             </div>

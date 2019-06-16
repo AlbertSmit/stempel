@@ -1,4 +1,4 @@
-const { app, Menu, Tray, BrowserWindow } = require('electron')
+const { app, Menu, Tray, BrowserWindow, systemPreferences } = require('electron')
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
@@ -67,3 +67,15 @@ app.on('activate', () => {
 
 // In this file you can include the rest of your app's specific main process
 // code. You can also put them in separate files and require them here.
+
+// subscribe to darkmode pref for macOS
+systemPreferences.subscribeNotification(
+  'AppleInterfaceThemeChangedNotification',
+  function theThemeHasChanged () {
+    updateMyAppTheme(systemPreferences.isDarkMode())
+  }
+)
+
+function updateMyAppTheme() {
+  console.log('dark mode.')
+}

@@ -7,10 +7,21 @@
 //     h('div', { a: 'b' }, 'foo')
 
 import { h, render } from 'preact';
+const { remote } = require('electron')
 
 // import filter
 import filter from './utilities/filter'
 let fs = require('fs')
+
+// set colour theme REALLY EARLY ON.
+function setTheme() {
+    const { systemPreferences } = remote
+    let theme = systemPreferences.isDarkMode() ? 'dark' : 'light'
+    //window.localStorage.setItem('darkmode',theme)
+    window.localStorage.os_theme = theme
+}
+
+setTheme()
 
 // this holds our rendered root element so we can re-render in response to HMR updates.
 let root;

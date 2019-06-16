@@ -6,7 +6,6 @@ import Options from './options';
 import Landing from './landing';
 import TitleBar from './titlebar';
 import LandPad from './landpad';
-import Settings from './settings';
 import Footer from './footer';
 
 //->
@@ -25,7 +24,6 @@ export default class App extends Component {
                     <Options />
                     <Landing />
                     <LandPad />
-                    <Settings />
                     <Footer />
                 </div>
             </div>

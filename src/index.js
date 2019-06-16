@@ -39,6 +39,9 @@ let fileCollection = []
 document.addEventListener('drop', (e) => {
     e.preventDefault();
     e.stopPropagation();
+
+    console.log('amount of files dropped: ',e.dataTransfer.files.length)
+
     for (const f of e.dataTransfer.files) {
         filter(f.path, f.name)
         // let newFile = { filename: `"${f.name}"`}
@@ -51,9 +54,3 @@ document.addEventListener('dragover', (e) => {
     e.preventDefault();
     e.stopPropagation();
 });
-
-// document.addEventListener('dragenter', (e) => {
-//     e.preventDefault();
-//     e.stopPropagation();
-//     document.getElementById('landpad').classList.toggle('landpad-dragenter')
-// });

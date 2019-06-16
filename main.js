@@ -1,5 +1,4 @@
-const { app, BrowserWindow } = require('electron')
-const settings = require('electron-settings');
+const { app, Menu, Tray, BrowserWindow } = require('electron')
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
@@ -34,7 +33,20 @@ function createWindow () {
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
 // Some APIs can only be used after this event occurs.
-app.on('ready', createWindow)
+app.on('ready', () => {
+  //createTray()
+  createWindow()
+})
+
+// const createTray = () => {
+//   tray = new Tray('src/assets/sunTemplate.png')
+//   tray.on('click', function (event) {
+//     console.log('Klik!')
+//   })
+//   tray.on('drop-files', function(event, files) {
+//     console.log('files: ',files)
+//   })
+// }
 
 // Quit when all windows are closed.
 app.on('window-all-closed', () => {

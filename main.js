@@ -1,4 +1,5 @@
 const { app, Menu, Tray, BrowserWindow, systemPreferences } = require('electron')
+const path = require('path')
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
@@ -7,12 +8,20 @@ let win
 function createWindow () {
   // Create the browser window.
   win = new BrowserWindow({
+    show: false,
+    backgroundColor: `${systemPreferences.isDarkMode() ? '#333333' : 'f7f7f7'}`,
     width: 600,
     height: 450,
     titleBarStyle: 'hidden',
     webPreferences: {
+      preload: path.join(__dirname, 'preload.js'),
       nodeIntegration: true
     }
+  })
+
+  // wait until ready to prevent FOUC
+  win.once('ready-to-show', () => {
+    win.show()
   })
 
   // and load the index.html of the app.
@@ -38,16 +47,6 @@ app.on('ready', () => {
   createWindow()
 })
 
-// const createTray = () => {
-//   tray = new Tray('src/assets/sunTemplate.png')
-//   tray.on('click', function (event) {
-//     console.log('Klik!')
-//   })
-//   tray.on('drop-files', function(event, files) {
-//     console.log('files: ',files)
-//   })
-// }
-
 // Quit when all windows are closed.
 app.on('window-all-closed', () => {
   // On macOS it is common for applications and their menu bar
@@ -67,15 +66,3 @@ app.on('activate', () => {
 
 // In this file you can include the rest of your app's specific main process
 // code. You can also put them in separate files and require them here.
-
-// subscribe to darkmode pref for macOS
-systemPreferences.subscribeNotification(
-  'AppleInterfaceThemeChangedNotification',
-  function theThemeHasChanged () {
-    updateMyAppTheme(systemPreferences.isDarkMode())
-  }
-)
-
-function updateMyAppTheme() {
-  console.log('dark mode.')
-}

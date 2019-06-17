@@ -3,7 +3,19 @@
   <head>
     <meta charset="UTF-8">
     <title>Stempel</title>
+    <script>
+
+      window.__setTheme = () => {
+        let OSTheme = localStorage.os_theme
+        document.documentElement.setAttribute( 'data-theme', OSTheme )
+      }
+      
+      __setTheme()
+
+    </script>
+
     <link rel="stylesheet" type="text/css" href="../build/styles.css">
+    
   </head>
   <body id="holder justify-center">
 

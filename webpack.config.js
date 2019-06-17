@@ -11,7 +11,8 @@ module.exports = {
 		path: path.join(__dirname, 'build'),
 		filename: 'bundle.js'
 	},
-  target: 'node',
+	// used to be 'node'
+  target: 'electron-main',
 	module: {
 		rules: [
 			{

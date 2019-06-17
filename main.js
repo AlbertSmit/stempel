@@ -1,5 +1,5 @@
-const { app, BrowserWindow } = require('electron')
-const settings = require('electron-settings');
+const { app, Menu, Tray, BrowserWindow, systemPreferences } = require('electron')
+const path = require('path')
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
@@ -8,12 +8,45 @@ let win
 function createWindow () {
   // Create the browser window.
   win = new BrowserWindow({
+    show: false,
+    backgroundColor: `${systemPreferences.isDarkMode() ? '#292929' : 'f7f7f7'}`,
     width: 600,
     height: 450,
     titleBarStyle: 'hidden',
     webPreferences: {
+      preload: path.join(__dirname, 'preload.js'),
       nodeIntegration: true
     }
+  })
+
+  // // create menu
+  // let menu = Menu.buildFromTemplate([
+  //   {
+  //     label: 'Menu',
+  //     submenu: [
+  //         {label:'Adjust Notification Value'},
+  //         {label:'CoinMarketCap'},
+  //         {type:'separator'},
+  //         {label:'Exit'}
+  //     ]
+  //   },{
+  //     label: 'API',
+  //     submenu: [
+  //       {
+  //         label:'Disable API',
+  //         checked: true,
+  //         click() {
+  //           console.log('clicked api option')
+  //         }
+  //       }
+  //     ]
+  //   }
+  // ])
+  // Menu.setApplicationMenu(menu); 
+
+  // wait until ready to prevent FOUC
+  win.once('ready-to-show', () => {
+    win.show()
   })
 
   // and load the index.html of the app.
@@ -34,7 +67,10 @@ function createWindow () {
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
 // Some APIs can only be used after this event occurs.
-app.on('ready', createWindow)
+app.on('ready', () => {
+  //createTray()
+  createWindow()
+})
 
 // Quit when all windows are closed.
 app.on('window-all-closed', () => {

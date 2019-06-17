@@ -8,13 +8,6 @@ import TitleBar from './titlebar';
 import LandPad from './landpad';
 import Footer from './footer';
 
-//->
-// create notification 
-// myNotification = () => { new Notification('Stempel', {
-//     body: 'Stem marking finished.'
-//     })
-// }
-
 export default class App extends Component {
     render() {
         return (

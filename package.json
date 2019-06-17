@@ -31,9 +31,12 @@
   "main": "public/electron.js",
   "homepage": "./",
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
+    "start": "npm-run-all -p start:css start:js",
+    "build": "npm-run-all build:css build:js",
+    "start:js": "rescripts start",
+    "build:js": "rescripts build",
+    "start:css": "postcss src/css/tailwind.src.css -o src/tailwind.css -w",
+    "build:css": "postcss src/css/tailwind.src.css -o src/tailwind.css --env production",
     "eject": "react-scripts eject",
     "electron-dev": "concurrently \"BROWSER=none npm start\" \"wait-on http://localhost:3000 && electron .\"",
     "postinstall": "electron-builder install-app-deps",
@@ -56,11 +59,16 @@
     ]
   },
   "devDependencies": {
+    "@fullhuman/postcss-purgecss": "^1.2.0",
     "@rescripts/cli": "0.0.10",
     "@rescripts/rescript-env": "0.0.10",
     "concurrently": "^4.1.0",
     "electron": "^5.0.4",
     "electron-builder": "^20.43.0",
+    "npm-run-all": "^4.1.5",
+    "postcss-cli": "^6.1.2",
+    "purgecss": "^1.3.0",
+    "tailwindcss": "^1.0.4",
     "typescript": "^3.5.2",
     "wait-on": "^3.2.0"
   }

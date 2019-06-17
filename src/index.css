@@ -1,13 +1,94 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+[data-theme^="light"],
+[data-theme] [data-theme^="light"] {
+  --main-color: rgb(41,41,41);
+  --background-color: #f7f7f7;
+  --button-color: white;
+  --landpad-color: white;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
+[data-theme^="dark"],
+[data-theme] [data-theme^="dark"] {
+  --main-color: #f7f7f7;
+  --background-color: rgb(41, 41, 41);
+  --button-color: #333;
+  --landpad-color: #333;
+}
+
+#root {
+  padding: 0;
+}
+
+
+body {
+    background-color: var(--background-color);
+    color: var(--main-color);
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+#holder {
+    display: flex;
+    width: 99.9%;
+    height: 99.9%;
+}
+
+.app {
+    display: flex;
+    flex-direction: column;
+}
+
+.landpad {
+    background-color: var(--landpad-color);
+    display: flex;
+    flex: 3;
+
+    -webkit-transform: scale(1);
+    transform: scale(1);
+
+    -webkit-transition: all .5s;
+    transition: all .5s;
+}
+
+.landpad-dragenter {
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
+}
+
+.landing {
+    flex: 2;
+}
+
+.footer {
+    flex: 0.5;
+}
+
+.options {
+    align-items: center;
+    justify-content: space-between;
+    display: flex;
+    flex: 2;
+}
+
+.button {
+    padding: 0.5rem 0 0.5rem 0;
+    background-color: var(--button-color);
+    color: var(--main-color);
+    min-width: 27%;
+}
+
+h1 {
+    font-weight: 400;
+    font-size: 5rem;
+}
+
+.titleBar {
+    width: 100%;
+    height: 40px;
+}
+
+.main-margin {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    height: 90vh;
+    padding: 1rem 3rem 1rem 3rem;
 }

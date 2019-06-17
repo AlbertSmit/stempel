@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-expressions */
-const { config, secondary } = require('../configs/default')
+const { config } = require('../configs/default')
 const rename = require('./rename')
 
 async function filter (fullpath, uppercaseFilename) {

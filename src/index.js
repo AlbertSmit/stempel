@@ -1,9 +1,22 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { remote } from 'electron'
+
 import './index.css';
 import './tailwind.css';
+
 import App from './components/app';
 import * as serviceWorker from './serviceWorker';
+
+
+function setTheme() {
+    const { systemPreferences } = remote
+    let theme = systemPreferences.isDarkMode() ? 'dark' : 'light'
+    //window.localStorage.setItem('darkmode',theme)
+    window.localStorage.os_theme = theme
+}
+
+setTheme()
 
 ReactDOM.render(<App />, document.getElementById('root'));
 

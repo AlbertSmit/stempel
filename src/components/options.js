@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 import '../index.css'
 
@@ -16,7 +17,7 @@ export default function options() {
         <div 
             className="button rounded-lg font-light text-sm text-center align-middle text-gray-500"
             onClick={(e) => settings(e)}>
-                Settings
+                <Link to='/test'>Settings</Link>
         </div>
     </div>
     )

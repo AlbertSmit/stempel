@@ -1,49 +1,67 @@
 {
   "name": "stempel",
-  "version": "0.0.1",
-  "description": "Batch rename your stems based on instrument-group.",
+  "version": "0.1.0",
+  "private": true,
+  "author": {
+    "name": "Albert Smit",
+    "email": "webdev@albertsm.it",
+    "url": "https://albertsm.it"
+  },
   "build": {
-    "appId": "com.electron.stempel",
+    "appId": "com.albertsm.it.stempel",
+    "productName": "Stempel",
+    "copyright": "Copyright © 2019 ${author}",
     "mac": {
       "category": "public.app-category.utilities"
+    },
+    "files": [
+      "build/**/*",
+      "node_modules/**/*"
+    ],
+    "directories": {
+      "buildResources": "assets"
     }
   },
-  "main": "main.js",
-  "scripts": {
-    "start": "electron .",
-    "build": "webpack --mode=production",
-    "dev": "webpack-dev-server --progress --hot --inline",
-    "rb": "webpack --mode=production && electron .",
-    "pack": "electron-builder --dir",
-    "dist": "electron-builder"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "devDependencies": {
-    "@babel/core": "^7.4.5",
-    "@babel/plugin-transform-react-jsx": "^7.3.0",
-    "@babel/preset-env": "^7.4.5",
-    "autoprefixer": "^9.6.0",
-    "babel-core": "^6.26.3",
-    "babel-loader": "^8.0.6",
-    "babel-plugin-transform-react-jsx": "^6.24.1",
-    "css-loader": "^3.0.0",
-    "electron": "^5.0.3",
-    "electron-builder": "^20.43.0",
-    "html-webpack-plugin": "^3.2.0",
-    "mini-css-extract-plugin": "^0.7.0",
-    "postcss-cli": "^6.1.2",
-    "postcss-loader": "^3.0.0",
-    "style-loader": "^0.23.1",
-    "tailwindcss": "^1.0.4",
-    "webpack": "^4.34.0",
-    "webpack-cli": "^3.3.4",
-    "webpack-dev-server": "^3.7.1"
-  },
   "dependencies": {
-    "json-loader": "^0.5.7",
-    "preact": "^8.4.2",
-    "preact-router": "^2.6.1"
+    "electron-is-dev": "^1.1.0",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "react-scripts": "3.0.1"
+  },
+  "main": "public/electron.js",
+  "homepage": "./",
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "electron-dev": "concurrently \"BROWSER=none npm start\" \"wait-on http://localhost:3000 && electron .\"",
+    "postinstall": "electron-builder install-app-deps",
+    "preelectron-pack": "npm build",
+    "electron-pack": "build -mw"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "@rescripts/cli": "0.0.10",
+    "@rescripts/rescript-env": "0.0.10",
+    "concurrently": "^4.1.0",
+    "electron": "^5.0.4",
+    "electron-builder": "^20.43.0",
+    "typescript": "^3.5.2",
+    "wait-on": "^3.2.0"
   }
 }

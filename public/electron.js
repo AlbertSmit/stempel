@@ -1,4 +1,4 @@
-const { app, BrowserWindow, systemPreferences } = require('electron');
+const { app, BrowserWindow, systemPreferences, globalShortcut } = require('electron');
 
 const path = require('path');
 const isDev = require('electron-is-dev');
@@ -32,7 +32,12 @@ function createWindow() {
     mainWindow.on('closed', () => mainWindow = null);
 }
 
-app.on('ready', createWindow);
+app.on('ready', () => {
+    createWindow()
+    globalShortcut.register('Cmd+,', () => {
+        console.log('Cmd+Comma is pressed')
+    })
+});
 
 app.on('window-all-closed', () => {
     if (process.platform !== 'darwin') {

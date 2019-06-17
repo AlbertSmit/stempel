@@ -43,7 +43,6 @@
   },
   "dependencies": {
     "json-loader": "^0.5.7",
-    "nedb": "^1.8.0",
     "preact": "^8.4.2",
     "preact-router": "^2.6.1"
   }

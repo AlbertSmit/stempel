@@ -9,7 +9,7 @@ function createWindow () {
   // Create the browser window.
   win = new BrowserWindow({
     show: false,
-    backgroundColor: `${systemPreferences.isDarkMode() ? '#333333' : 'f7f7f7'}`,
+    backgroundColor: `${systemPreferences.isDarkMode() ? '#292929' : 'f7f7f7'}`,
     width: 600,
     height: 450,
     titleBarStyle: 'hidden',
@@ -18,6 +18,31 @@ function createWindow () {
       nodeIntegration: true
     }
   })
+
+  // // create menu
+  // let menu = Menu.buildFromTemplate([
+  //   {
+  //     label: 'Menu',
+  //     submenu: [
+  //         {label:'Adjust Notification Value'},
+  //         {label:'CoinMarketCap'},
+  //         {type:'separator'},
+  //         {label:'Exit'}
+  //     ]
+  //   },{
+  //     label: 'API',
+  //     submenu: [
+  //       {
+  //         label:'Disable API',
+  //         checked: true,
+  //         click() {
+  //           console.log('clicked api option')
+  //         }
+  //       }
+  //     ]
+  //   }
+  // ])
+  // Menu.setApplicationMenu(menu); 
 
   // wait until ready to prevent FOUC
   win.once('ready-to-show', () => {

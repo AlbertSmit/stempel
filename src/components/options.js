@@ -17,7 +17,7 @@ export default function options() {
         <div 
             className="button rounded-lg font-light text-sm text-center align-middle text-gray-500"
             onClick={(e) => settings(e)}>
-                <Link to='/test'>Settings</Link>
+                <Link to='/settings'>Settings</Link>
         </div>
     </div>
     )

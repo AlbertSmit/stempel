@@ -7,26 +7,23 @@ import './index.css';
 import './tailwind.css';
 
 import App from './components/app';
-import Test from './components/test'
+import Settings from './components/settings';
 
 import * as serviceWorker from './serviceWorker';
-
 
 function setTheme() {
     const { systemPreferences } = remote
     let theme = systemPreferences.isDarkMode() ? 'dark' : 'light'
-    //window.localStorage.setItem('darkmode',theme)
     window.localStorage.os_theme = theme
 }
 
 setTheme()
 
-// routing
 const routing = (
     <Router>
       <>
         <Route exact path="/" component={App} />
-        <Route path="/test" component={Test} />
+        <Route path="/settings" component={Settings} />
       </>
     </Router>
 )

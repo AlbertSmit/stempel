@@ -58,14 +58,14 @@ const data = {
         ]
     },
     'Synth': {
-        'prefix': 'E - ',
+        'prefix': 'F - ',
         'filenames': [
             'synth',
             'korg'
         ]
     },
     'Key': {
-        'prefix': 'F - ',
+        'prefix': 'G - ',
         'filenames': [
             'key',
             'piano',
@@ -88,11 +88,16 @@ const data = {
         ]
     },
     'FX': {
-        'prefix': 'G - ',
+        'prefix': 'H - ',
         'filenames': [
             'fx'
         ]
     }
 }
 
-module.exports = data
+// returns array of all possible prefixes (for ignore algorithm)
+const prefixes = {
+    'sum': Object.keys(data).map(key => data[key].prefix)
+}
+
+module.exports = { data, prefixes }

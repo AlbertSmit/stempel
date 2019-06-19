@@ -1,5 +1,5 @@
 import React from 'react'
-import filter from '../utilities/filter'
+import filter from '../utilities/algorithm'
 
 export default function landpad() {
     return (
@@ -14,11 +14,11 @@ document.addEventListener('drop', (e) => {
     e.preventDefault();
     e.stopPropagation();
 
-    console.log('amount of files dropped: ',e.dataTransfer.files.length)
-
-    for (const f of e.dataTransfer.files) {
-        filter(f.path, f.name)
+    for (const file of e.dataTransfer.files) {
+        filter(file)
     }
+
+    //filter(Array.from(e.dataTransfer.files))
 });
 
 document.addEventListener('dragover', (e) => {

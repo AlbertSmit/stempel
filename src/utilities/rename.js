@@ -6,13 +6,14 @@ async function rename (fullPathname, filename, prefix, group) {
         // get path without filename
         let pathWithoutFile = fullPathname.replace(filename,'')
 
+        // API off toggle
+        let enabled = false
         // sending name to API (if online)
-        console.log( 'is device online?: ',navigator.onLine )
-        if( navigator.onLine === true) {
-            fetch('https://stempel-insight-api.now.sh/api/filenames.js', {
+        if( navigator.onLine === true && enabled === true) {
+            fetch('https://stempel-insight-api.now.sh/api', {
                 method: 'post',
                 headers: {
-                    'Content-Type': 'application/json',
+                    'Content-Type': 'application/json'
                     // 'Content-Type': 'application/x-www-form-urlencoded',
                 },
                 body: JSON.stringify({
@@ -23,8 +24,9 @@ async function rename (fullPathname, filename, prefix, group) {
                 return response.json();
             })
         }
+        
         // rename file and save it
-        fs.rename(`${fullPathname}`,`${pathWithoutFile}${prefix} - ${filename}`, function(err) {
+        fs.rename(`${fullPathname}`,`${pathWithoutFile}${prefix}${filename}`, function(err) {
             if ( err ) console.log('ERROR: ' + err);
         })
     }

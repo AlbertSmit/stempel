@@ -1,24 +1,30 @@
 const data = require('../configs/dataset')
+const rename = require('./rename')
 
 // new async function temporarily here.
-async function rename (filename, prefix) {
-  console.log(prefix,filename)
-}
+// async function rename (path, filename, prefix, group) {
+//   console.log('rename: ',prefix,filename)
+// }
 
 async function filter (input) {
-    // take in Array of filenames
-    input.reduce((acc, filename) => {
-        // make the filenames lowercase
-        const lowercase = filename.toLowerCase()
-        // 1. take object keys of dataset
-        // 2. filter them to see if filenames includes them (without filetype)
-        // 3. TODO = add Regex to filter out filetype extension instead
-        const category = Object.keys(data).filter(key => 
-            data[key].filenames.includes(lowercase.slice(0, filename.length - 4))
-        )
-    // rename item with async function elsewhere
-    rename(filename,data[category].prefix)
-    },{});
+
+    Object.keys(data).filter(group => {
+        // setup / easier references
+        const lowercase = input.name.toLowerCase().slice(0, input.name.length - 4)
+        const instruments = data[group].filenames
+        const prefix = data[group].prefix
+
+        // check for a match with includes method
+        function check (instruments) {
+            return lowercase.includes(instruments) ? rename(input.path, input.name, prefix, group) : null ;
+          }
+
+        // map over instruments, call check function
+        instruments.map(item => check(item))
+
+        // return nothing so that ES-lint stops whinin'
+        return null
+    })
 }
 
 export default filter

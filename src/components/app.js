@@ -18,9 +18,13 @@ export default class App extends Component {
         undo: store.get('mode')
     }
 
+    componentDidMount(){
+        store.set('mode', 'false')
+    }
+
     optionChange = () => {
         this.setState({ undo: !this.state.undo })
-        store.set('mode', !this.state.undo)
+        store.set('undo', !this.state.undo)
     }
 
     render() {

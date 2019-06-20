@@ -1,7 +1,11 @@
 import React from 'react'
 import filter from '../utilities/algorithm'
+import undo from '../utilities/undo';
 
-export default function landpad() {
+const Store = require('electron-store');
+const store = new Store();
+
+export default function Landpad(props) {
     return (
         <div id='landpad' className="landpad justify-center rounded-lg shadow-xl">
         
@@ -14,8 +18,11 @@ document.addEventListener('drop', (e) => {
     e.preventDefault();
     e.stopPropagation();
 
+    let mode = store.get('undo')
+
     for (const file of e.dataTransfer.files) {
-        filter(file)
+        // if file undo is set to TRUE, undo.
+        mode ? undo(file) : filter(file) ;
     }
 });
 

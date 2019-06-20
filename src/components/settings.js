@@ -14,6 +14,10 @@ function apiSetting(e) {
     store.set('api', !current)
 }
 
+function undoSetting(e) {
+    let current = store.get('undo')
+    store.set('undo', !current)
+}
 //
 export default function Settings() {
     return (
@@ -22,7 +26,7 @@ export default function Settings() {
             <div class="main-margin">
                 <h1 className='antialiased text-5xl font-medium fadeslide'>Settings</h1>
                 <API store={store} apiSetting={apiSetting}/>
-                <Prefix store={store} />
+                <Prefix store={store} undoSetting={undoSetting} />
                 <Back />
             </div>
         </div>

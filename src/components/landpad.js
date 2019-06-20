@@ -17,8 +17,6 @@ document.addEventListener('drop', (e) => {
     for (const file of e.dataTransfer.files) {
         filter(file)
     }
-
-    //filter(Array.from(e.dataTransfer.files))
 });
 
 document.addEventListener('dragover', (e) => {

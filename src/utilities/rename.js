@@ -1,7 +1,8 @@
 import ignore from './ignore';
 
-const settings = require('../configs/settings')
 let fs = require('fs');
+const Store = require('electron-store');
+const store = new Store();
 
 async function rename (fullPathname, filename, prefix, group) {
     
@@ -9,7 +10,7 @@ async function rename (fullPathname, filename, prefix, group) {
         let pathWithoutFile = fullPathname.replace(filename,'')
 
         // sending name to API (if online)
-        if( navigator.onLine === true && settings.API === true) {
+        if( navigator.onLine === true && store.get('api') === true) {
             fetch('https://stempel-insight-api.albertsmit.now.sh/api/filenames.js', {
                 method: 'post',
                 body: JSON.stringify({
@@ -29,7 +30,7 @@ async function rename (fullPathname, filename, prefix, group) {
             if ( err ) console.log('ERROR: ' + err);
         })
     }
-    
+
     catch(e) { console.error(e) }
 }
 

@@ -4,6 +4,7 @@
   --background-color: #f7f7f7;
   --button-color: white;
   --landpad-color: white;
+  --failed-color: tomato;
 }
 
 [data-theme^="dark"],
@@ -12,6 +13,7 @@
   --background-color: rgb(41, 41, 41);
   --button-color: #333;
   --landpad-color: #333;
+  --failed-color: tomato;
 }
 
 #root {
@@ -34,6 +36,21 @@ body {
 .app {
     display: flex;
     flex-direction: column;
+}
+
+.failed {
+    color: white;
+    background-color: var(--failed-color);
+    animation: bg 0.5s;
+}
+
+@keyframes bg {
+    from {
+        background-color: var(--background-color);
+    }
+    to {
+        background-color: var(--failed-color);
+    }
 }
 
 .landpad {
@@ -91,4 +108,36 @@ h1 {
     flex-direction: column;
     height: 90vh;
     padding: 1rem 3rem 1rem 3rem;
+}
+
+.api,
+.prefix {
+    border-top: 1px solid var(--landpad-color);
+    color: var(--main-color);
+    margin-top: 0.5rem;
+    margin-bottom: 1rem;
+    background-color: none;
+}
+
+.fade {
+    animation: fade 0.5s;
+}
+
+@keyframes fade {
+    from { opacity: 0; } to { opacity: 1; }
+}
+
+.fadeslide {
+    animation: fadeslide 0.5s;
+}
+
+@keyframes fadeslide {
+    from { 
+        opacity: 0; 
+        padding-left: 1rem;
+    } 
+    to { 
+        opacity: 1; 
+        padding-left: 0rem;
+    }
 }

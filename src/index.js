@@ -8,6 +8,7 @@ import './tailwind.css';
 
 import App from './components/app';
 import Settings from './components/settings';
+import Failed from './components/failed';
 
 import * as serviceWorker from './serviceWorker';
 
@@ -23,7 +24,8 @@ const routing = (
     <Router>
       <>
         <Route exact path="/" component={App} />
-        <Route path="/settings" component={Settings} />
+        <Route exact path="/failed" component={Failed} />
+        <Route exact path="/settings" component={Settings} />
       </>
     </Router>
 )

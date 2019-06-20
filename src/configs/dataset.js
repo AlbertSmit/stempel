@@ -10,12 +10,13 @@ const data = {
             'clap',
             'drum',
             'cajon',
+            'conga',
             'djembe',
             'crash',
             'cymbal',
             'shaker',
             'steelpan',
-            'tambourin',
+            'tambourim',
             'tambourine'
         ]
     },
@@ -26,7 +27,7 @@ const data = {
             'horn', 
             'trumpet',
             'bugle',
-            'corner',
+            'cornet',
             'cornu',
             'tuba',
             'saxtuba',

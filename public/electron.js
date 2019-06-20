@@ -1,4 +1,4 @@
-const { app, BrowserWindow, systemPreferences, globalShortcut } = require('electron');
+const { app, BrowserWindow, systemPreferences, globalShortcut, ipcMain } = require('electron');
 
 const path = require('path');
 const isDev = require('electron-is-dev');
@@ -36,6 +36,7 @@ app.on('ready', () => {
     createWindow()
     globalShortcut.register('Cmd+,', () => {
         console.log('Cmd+Comma is pressed')
+        mainWindow.webContents.send('ping', '/settings');
     })
 });
 

@@ -21,12 +21,13 @@ Instruments are grouped per letter (as shown in .gif), so for instance:
 Dependencies
 ---
 Stempel currently mainly uses:
-- Preact
+- ~~Preact~~ **React**.
 - Webpack
 - Electron
 - TailwindCSS
 - PostCSS
 
+_Would still be using Preact, if the Router wouldn't be such a pain in the butt._
 
 ---
 

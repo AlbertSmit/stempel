@@ -1,7 +1,25 @@
-import { h } from 'preact';
-	
-export default () => (
-    <div id='landpad' class="landpad justify-center rounded-lg shadow-xl">
+import React from 'react'
+import filter from '../utilities/algorithm'
+
+export default function landpad() {
+    return (
+        <div id='landpad' className="landpad justify-center rounded-lg shadow-xl">
         
-    </div>
-);
+        </div>
+    )
+}
+
+// A: Load the event listener for drag and drop in electron
+document.addEventListener('drop', (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+
+    for (const file of e.dataTransfer.files) {
+        filter(file)
+    }
+});
+
+document.addEventListener('dragover', (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+});

@@ -1,5 +1,7 @@
-import { h } from 'preact';
-	
-export default () => (
-    <div class="titleBar" style="-webkit-app-region: drag"></div>
-);
+import React from 'react'
+
+export default function titlebar() {
+    return (
+        <div className="titleBar" style={{WebkitAppRegion: 'drag'}}></div>
+    )
+}

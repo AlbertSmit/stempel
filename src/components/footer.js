@@ -1,7 +1,9 @@
-import { h } from 'preact';
-	
-export default () => (
-    <div class="footer">
+import React from 'react'
+
+export default function footer() {
+    return (
+        <div className="footer">
         
-    </div>
-);
+        </div>
+    )
+}

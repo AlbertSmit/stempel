@@ -1,20 +1,18 @@
+import ignore from './ignore';
+
 let fs = require('fs');
+const Store = require('electron-store');
+const store = new Store();
 
 async function rename (fullPathname, filename, prefix, group) {
     
     try {
-        // get path without filename
         let pathWithoutFile = fullPathname.replace(filename,'')
 
         // sending name to API (if online)
-        console.log( 'is device online?: ',navigator.onLine )
-        if( navigator.onLine === true) {
-            fetch('https://stempel-insight-api.now.sh/api/filenames.js', {
+        if( navigator.onLine === true && store.get('api') === true) {
+            fetch('https://stempel-insight-api.albertsmit.now.sh/api/filenames.js', {
                 method: 'post',
-                headers: {
-                    'Content-Type': 'application/json',
-                    // 'Content-Type': 'application/x-www-form-urlencoded',
-                },
                 body: JSON.stringify({
                     'filename': filename,
                     'assumpted group': group
@@ -23,16 +21,17 @@ async function rename (fullPathname, filename, prefix, group) {
                 return response.json();
             })
         }
-        // rename file and save it
-        fs.rename(`${fullPathname}`,`${pathWithoutFile}${prefix} - ${filename}`, function(err) {
+        
+        // temp ignore
+        // await true or false 
+        await ignore(filename)
+
+        fs.rename(`${fullPathname}`,`${pathWithoutFile}${prefix}${filename}`, function(err) {
             if ( err ) console.log('ERROR: ' + err);
         })
     }
 
-    catch(e) {
-        console.error(e)
-    }
-
+    catch(e) { console.error(e) }
 }
 
-module.exports = rename
+export default rename;
